@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Joueur.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/PetitEnnemi.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/GrosEnnemi.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Zone1.gd" type="Script" id=5]
+
+[node name="Zone1" type="Node"]
+script = ExtResource( 5 )
+
+[node name="Joueur" parent="." instance=ExtResource( 1 )]
+position = Vector2( 392, 169 )
+
+[node name="PetitEnnemi" parent="." instance=ExtResource( 2 )]
+position = Vector2( 407.412, -0.628597 )
+
+[node name="GrosEnnemi" parent="." instance=ExtResource( 3 )]
+position = Vector2( 272.144, 5.03967 )
+
+[node name="GrosEnnemi2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 541.766, 5.0397 )
+
+[node name="PetitEnnemi2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 669.018, 3.77975 )
+
+[node name="PetitEnnemi3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 144.891, -2.51985 )

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Joueur.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Balle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/shoot.wav" type="AudioStream" id=3]
 
 [node name="Joueur" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -11,6 +12,11 @@ balle = ExtResource( 2 )
 position = Vector2( 0, -8 )
 polygon = PoolVector2Array( -32, 32, -32, -16, 32, 8 )
 
+[node name="canon" type="Polygon2D" parent="Corps"]
+visible = false
+position = Vector2( 40, 8 )
+polygon = PoolVector2Array( 24, -4, 24, 4, 32, 4, 32, -4 )
+
 [node name="collisioncorps" type="CollisionPolygon2D" parent="."]
 position = Vector2( -56, 8 )
 polygon = PoolVector2Array( 24, 16, 24, -32, 88, -8 )
@@ -18,7 +24,26 @@ polygon = PoolVector2Array( 24, 16, 24, -32, 88, -8 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
-[node name="canon" type="Polygon2D" parent="."]
-visible = false
-position = Vector2( 40, 0 )
-polygon = PoolVector2Array( 24, -4, 24, 4, 32, 4, 32, -4 )
+[node name="shootSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -6.058
+
+[node name="vielabel" type="Label" parent="."]
+margin_left = 416.0
+margin_top = -260.0
+margin_right = 456.0
+margin_bottom = -246.0
+text = "Vie % :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ennemis" type="Label" parent="."]
+margin_left = 396.0
+margin_top = -232.0
+margin_right = 463.0
+margin_bottom = -218.0
+text = "Ennemis : "
+__meta__ = {
+"_edit_use_anchors_": false
+}

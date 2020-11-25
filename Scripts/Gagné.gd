@@ -1,8 +1,6 @@
-extends KinematicBody2D
+extends Node
 
-var vitesse = 500
-var velocite = Vector2()
-var direction
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -16,10 +14,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-func _physics_process(delta):
-	var collision = move_and_collide(velocite*delta)
 
-func creer(pos,dir):
-	position = pos
-	direction = dir
-	velocite = Vector2(vitesse,0).rotated(direction)
+
+func _on_Button_pressed():
+	get_tree().change_scene("res://Scenes/Zone1.tscn")
+	GlobalScript.restantEnnemi = 5
