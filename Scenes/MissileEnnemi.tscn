@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/MissileEnnemi.gd" type="Script" id=1]
+
+[node name="MissileEnnemi" type="KinematicBody2D" groups=[
+"MissileEnnemi",
+]]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource( 1 )
+vitesse = 300
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PoolVector2Array( 8, -8, -8, -8, -8, 8, 8, 8 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -8, -8, -8, 8, 8, 8, 8, -8 )

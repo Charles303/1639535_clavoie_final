@@ -44,11 +44,23 @@ func _process(delta):
 		get_tree().change_scene("res://Scenes/GameOver.tscn")
 	labelennemis.set_text("Ennemis : " + str(GlobalScript.restantEnnemi))
 	GlobalScript.joueurpos = corps.global_position
+	
+	var strnbvie = str(pcvie) #mettre pcvie en string pour le label
+	vielabel.set_text("Vie % : " + strnbvie)
+	pcvie = int(strnbvie) #mettre pcvie en int pour calculs
+
 func _physics_process(delta):
 	get_input()
 	dir = get_global_mouse_position() - global_position
+	velocite = move_and_slide(velocite)
 	if dir.length() > 10:
 		corps.rotation = dir.angle() #rotation entre -3 et 3
 		colcoprs.rotation = dir.angle() #change la rotation du corps et celle de sa zone de collision
-		velocite = move_and_slide(velocite)
-	var collision = move_and_collide(velocite*delta)
+
+func _on_Area2D_body_entered(body):
+	if body.is_in_group("BalleEnnemi"):
+		get_tree().queue_delete(body)
+		pcvie = pcvie - 5
+	elif body.is_in_group("MissileEnnemi"):
+		get_tree().queue_delete(body)
+		pcvie = pcvie - 10

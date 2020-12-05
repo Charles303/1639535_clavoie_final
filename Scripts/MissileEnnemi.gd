@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var vitesse = 500
+export var vitesse = 500
 var velocite = Vector2()
 var direction
 # Declare member variables here. Examples:
@@ -10,7 +10,7 @@ var direction
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

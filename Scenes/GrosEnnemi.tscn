@@ -1,12 +1,19 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/GrosEnnemi.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/MissileEnnemi.tscn" type="PackedScene" id=2]
 
 [node name="GrosEnnemi" type="KinematicBody2D"]
 script = ExtResource( 1 )
+missile = ExtResource( 2 )
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
+[node name="Corps" type="Polygon2D" parent="."]
 polygon = PoolVector2Array( -24, -24, -24, 24, 24, 24, 24, -24 )
+
+[node name="Canon" type="Polygon2D" parent="Corps"]
+visible = false
+position = Vector2( 30, 0 )
+polygon = PoolVector2Array( 32, -2, 32, 2, 34, 2, 34, -2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -22, -22, -22, 22, 22, 22, 22, -22 )
@@ -15,4 +22,9 @@ polygon = PoolVector2Array( -22, -22, -22, 22, 22, 22, 22, -22 )
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PoolVector2Array( -24, -24, -24, 24, 24, 24, 24, -24 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

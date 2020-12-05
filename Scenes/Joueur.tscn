@@ -5,6 +5,8 @@
 [ext_resource path="res://Assets/shoot.wav" type="AudioStream" id=3]
 
 [node name="Joueur" type="KinematicBody2D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource( 1 )
 balle = ExtResource( 2 )
 
@@ -19,7 +21,7 @@ polygon = PoolVector2Array( 24, -4, 24, 4, 32, 4, 32, -4 )
 
 [node name="collisioncorps" type="CollisionPolygon2D" parent="."]
 position = Vector2( -56, 8 )
-polygon = PoolVector2Array( 24, 16, 24, -32, 88, -8 )
+polygon = PoolVector2Array( 26, 14, 26, -30, 86, -8 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -47,3 +49,12 @@ text = "Ennemis : "
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Area2D" type="Area2D" parent="."]
+light_mask = 4
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( -32, -24, 32, 0, -32, 24 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
